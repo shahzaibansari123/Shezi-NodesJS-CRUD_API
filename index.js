@@ -8,6 +8,8 @@ app.use(bodyParser.json());
 
 app.get('/',(req, res) =>{
     console.log('Test')
+
+    res.send("helloworld")
 })
 
 app.listen(PORT,()=> console.log(`Server is running on ${PORT}`));
