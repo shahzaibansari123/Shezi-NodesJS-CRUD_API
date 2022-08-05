@@ -38,12 +38,25 @@ router.get("/:id", (req, res) => {
   res.send(foundUser);
 });
 
-
 router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+
+  users = users.filter((user) => user.id !== id);
+  res.send(`user with id: ${id} remove from mock DB`);
+});
+
+
+router.patch("/:id", (req, res) => {
     const { id } = req.params;
+    const {firstName,lastName,age} = req.body;
   
-    users = users.filter((user) => user.id !== id);
-    res.send(`user with id: ${id} remove from mock DB`);
+    const user = users.find((user) => user.id === id);
+
+    if(firstName) user.firstName=firstName;
+    if(lastName) user.lastName=lastName;
+    if(age) user.age=age;
+    
+    res.send(`user with the id ${id} has been updated`);
   });
 
 export default router;
