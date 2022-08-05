@@ -3,14 +3,14 @@ import express  from "express"
 const router=express.Router()
 const users=[
     {
-        firstname: "Shahzaib",
-        lastname: "Ansari",
+        firstName: "Shahzaib",
+        lastName: "Ansari",
         age: 21
     
     },
     {
-        firstname: "rushal",
-        lastname: "Ansari",
+        firstName: "rushal",
+        lastName: "Ansari",
         age: 20
     
     }
@@ -24,6 +24,11 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+
+    const user= req.body
+    users.push(user)
+   
+    res.send(`user with name ${user.firstName} added to the database`)
 
 })
 
